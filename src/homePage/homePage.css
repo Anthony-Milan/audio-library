@@ -1,0 +1,14 @@
+html{
+    height: 100%;
+    background-image: linear-gradient(to bottom right, rgb(117, 232, 236),rgb(109, 236, 177));
+    background-repeat: no-repeat;
+}
+h1 {
+    border-bottom-left-radius: 40%;
+    border-bottom-right-radius: 40%;
+    border:0px 0px 3px 0px solid black;
+    font-family: 'Barlow-Condensed', sans-serif;
+    font-weight: lighter;
+    font-style: italic;
+}
+

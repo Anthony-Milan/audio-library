@@ -7,6 +7,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: 'Barlow-Condensed', sans-serif;
+  src: url('./fonts/BarlowCondensed-Black.ttf') format(otf);
+  font-weight: bolder;
+}
+@font-face {
+  font-family: 'Barlow-Condensed', sans-serif;
+  src: url('./fonts/BarlowCondensed-BlackItalic.ttf') format(otf);
+  font-weight: bolder;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Barlow-Condensed', sans-serif;
+  src: url('./fonts/BarlowCondensed-Regular.ttf') format(otf);
+}
+@font-face {
+  font-family: 'Barlow-Condensed', sans-serif;
+  src: url('./fonts/BarlowCondensed-ExtraLight.ttf') format(otf);
+  font-weight: lighter;
+}
+@font-face {
+  font-family: 'Barlow-Condensed', sans-serif;
+  src: url('./fonts/BarlowCondensed-ExtraLightItalic.ttf') format(otf);
+  font-weight: lighter;
+  font-style: italic;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
