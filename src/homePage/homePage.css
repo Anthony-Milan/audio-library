@@ -4,11 +4,20 @@ html{
     background-repeat: no-repeat;
 }
 h1 {
+    padding: 10px 0px;
+    margin: 0px;
     border-bottom-left-radius: 40%;
     border-bottom-right-radius: 40%;
-    border:0px 0px 3px 0px solid black;
+    border:3px inset rgb(229, 238, 234);
     font-family: 'Barlow-Condensed', sans-serif;
     font-weight: lighter;
     font-style: italic;
+    color: rgb(229, 238, 234);
+    
+}
+h1:hover{
+    background-color: rgb(160, 196, 197);
+    color: rgb(7, 21, 27);
+    
 }
 
