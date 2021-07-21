@@ -85,7 +85,7 @@ const Carousel = ({ currentIndex, show }) => {
       <Slide>
         <Card
           showNumberOfTracks={index === currentIndex && show}
-          numberOfTracks={albumArray[currentIndex].tracks}
+          numberOfTracks={album.tracks}
           source={album.pictureSrc}
           band={album.band}
           name={album.name}
