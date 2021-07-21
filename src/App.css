@@ -1,0 +1,10 @@
+.App {
+  text-align: center;
+  height: 100%;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(117, 232, 236),
+    rgb(109, 236, 177)
+  );
+  background-repeat: no-repeat;
+}
