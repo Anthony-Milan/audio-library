@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./Card.module.css";
-const Card = (props) => {
+const Card = ({source, cardTitle, band, name, numberOfTracks, showNumberOfTracks}) => {
   return (
     <div className={styles.card}>
-      <img src={props.source} alt="Album Cover" />
+      <img src={source} alt="Album Cover" />
       <div className={styles.cardTitle}>
         <p>
-          {props.band} - {props.name} <span>{props.release}</span>
+          {band} - {name}
         </p>
-        <p>{props.showNumberOfTracks ? `Number Of Tracks: #${props.numberOfTracks}` : ""}</p>
+        <p>{showNumberOfTracks ? `Number Of Tracks: #${numberOfTracks}` : ""}</p>
       </div>
     </div>
   );

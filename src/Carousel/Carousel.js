@@ -1,91 +1,25 @@
 import Card from "../Card/Card";
 import { Slide } from "pure-react-carousel";
-const Carousel = ({ currentIndex, show }) => {
-
+import React, {Component} from 'react';
+import getAlbums from '../services';
+class Carousel extends Component{
   /**
   * array of data used to generate the cards
   */
-  const albumArray = [
-    {
-      id: "01",
-      band: "Scorpions",
-      name: "Crazy World",
-      release: "1990",
-      tracks: "11",
-      pictureSrc:
-        "https://upload.wikimedia.org/wikipedia/en/f/f0/ScorpionsCrazyWorld.jpg",
-    },
-    {
-      id: "02",
-      band: "Pink Floyd",
-      name: "Wish you were here",
-      release: "1975",
-      tracks: "5",
-      pictureSrc:
-        "https://cdn.europosters.eu/image/750/posters/pink-floyd-wish-you-were-here-i10124.jpg",
-    },
-    {
-      id: "03",
-      band: "Deep Purple",
-      name: "Machine Head",
-      release: "1972",
-      tracks: "7",
-      pictureSrc:
-        "https://upload.wikimedia.org/wikipedia/en/thumb/0/00/Machine_Head_album_cover.jpg/220px-Machine_Head_album_cover.jpg",
-    },
-    {
-      id: "04",
-      band: "Black Sabbath",
-      name: "Paranoid",
-      release: "1970",
-      tracks: "8",
-      pictureSrc:
-        "https://i0.wp.com/tuonelamagazine.com/wp-content/uploads/2020/08/9a4d3d7f6a8292ef7c313ab00e8262e5.jpg?fit=620%2C620&ssl=1",
-    },
-    {
-      id: "05",
-      band: "AC/DC",
-      name: "Highway to Hell",
-      release: "1979",
-      tracks: "10",
-      pictureSrc:
-        "https://cdn.europosters.eu/image/750/posters/ac-dc-highway-to-hell-i3509.jpg",
-    },
-    {
-      id: "06",
-      band: "Guns N' roses",
-      name: "Use Your Illusion II",
-      release: "1991",
-      tracks: "14",
-      pictureSrc:
-        "https://images-na.ssl-images-amazon.com/images/I/61UDzOLD6KL._SY355_.jpg",
-    },
-    {
-      id: "07",
-      band: "Lynyrd Skynyrd",
-      name: "(Pronounced 'Lĕh-'nérd 'Skin-'nérd)",
-      release: "1973",
-      tracks: "8",
-      pictureSrc:
-        "https://images-na.ssl-images-amazon.com/images/I/813cxqBHguL._SX522_.jpg",
-    },
-    {
-      id: "08",
-      band: "Led Zeppelin",
-      name: "Led Zeppelin IV",
-      release: "1971",
-      tracks: "8",
-      pictureSrc:
-        "https://upload.wikimedia.org/wikipedia/en/thumb/2/26/Led_Zeppelin_-_Led_Zeppelin_IV.jpg/220px-Led_Zeppelin_-_Led_Zeppelin_IV.jpg",
-    },
-  ];
+  state ={
+    albumArray:[{_id:"01", nbOfTracks: "14", pictureSrc:"data:image/jpeg;base64,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",
+    band:"Scorpions", name:"Crazy World", release:"1990"}
+    ]
+  }
   
-  return albumArray.map((album, index) => {
+  render(){  
+  if(this.state.albumArray){
+  return this.state.albumArray.map((album, index) => {
     return (
-      <Slide>
+      <Slide key={album._id}>
         <Card
-          showNumberOfTracks={index === currentIndex && show}
-          numberOfTracks={albumArray[currentIndex].tracks}
+          showNumberbOfTracks={album.showNbOfTracks}
+          numberOfTracks={album.nbOfTracks}
           source={album.pictureSrc}
           band={album.band}
           name={album.name}
@@ -94,5 +28,8 @@ const Carousel = ({ currentIndex, show }) => {
       </Slide>
     );
   });
+
+}
+}
 };
 export default Carousel;

@@ -1,60 +1,32 @@
 html {
   height: 100%;
-  background-image: linear-gradient(
-    to bottom right,
-    rgb(117, 232, 236),
-    rgb(109, 236, 177)
-  );
   background-repeat: no-repeat;
-}
-h1 {
-  padding: 10px 0px;
-  margin: 0px;
-  border-bottom-left-radius: 40%;
-  border-bottom-right-radius: 40%;
-  border: 3px outset rgb(117, 232, 236);
-  font-weight: lighter;
-  font-style: italic;
-  color: rgb(22, 24, 23);
-  background-color: rgb(109, 236, 177);
-}
-h1:hover {
-  background-color: rgb(249, 253, 253);
-  color: rgb(7, 21, 27);
-  border: 3px outset rgb(109, 236, 177);
 }
 .navigation {
   list-style-type: none;
   margin: 0;
   padding: 0px;
   overflow: hidden;
-  background-image: linear-gradient(
-    to right,
-    rgb(69, 221, 137),
-    rgb(25, 202, 233)
-  );
-  border-bottom: 1px solid white;
-  border-bottom-left-radius: 15%;
-  border-bottom-right-radius: 15%;
+  background-color: white;
 }
 .navigation li {
   float: left;
-  border-right: 1px solid white;
+  border-right: 1px solid rgb(139, 138, 138);
 }
 .navigation li:last-child {
   float: right;
-  border-left: 1px solid white;
+  border-left: 1px solid rgb(139, 138, 138);
   border-right: none;
 }
 .navigation a {
   display: block;
-  padding: 8px 20px;
+  padding: 16px 20px;
   color: black;
   text-align: center;
   text-decoration: none;
 }
 .navigation a:hover {
-  background-color: rgb(196, 130, 45);
+  background-color: rgba(117, 116, 115, 0.87);
   color: white;
   cursor: pointer;
 }
@@ -73,4 +45,10 @@ p.intro {
   border-radius: 8px;
   background-image: linear-gradient(rgb(84, 240, 240), rgb(29, 218, 145));
   border: 1px solid white;
+}
+@media (min-width: 1100px) and (min-height: 720px) {
+  .html {
+    width: 900px;
+    height: 500px;
+  }
 }
