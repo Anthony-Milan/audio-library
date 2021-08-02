@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import styles from "./homePage.module.css";
 
-const HomePage = (props) => {
-  return (
-    <div>
+
+  class HomePage extends Component{
+    render(){
+    return (
+    <div className={styles.overhead}>
       <ul className={styles.navigation}>
         <li>
           <a href="https://euriskomobility.com/">Home</a>
@@ -13,11 +15,12 @@ const HomePage = (props) => {
             About
           </a>
         </li>
-        <li className={styles.Logo}><a>Your Audio Library!</a></li>
+        <li><img className={styles.logoImg} src="Audio-Library Logo.png" alt="logo"></img></li>
+        <li><a>Your Audio Library!</a></li>
       </ul>
-      <br />
-      <p className={styles.intro}>Welcome to your Audio Library!</p>
+      <br/>
     </div>
   );
+    }
 };
 export default HomePage;

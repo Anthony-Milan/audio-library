@@ -1,27 +1,36 @@
-html {
-  height: 100%;
-  background-repeat: no-repeat;
+.overhead {
+  text-align: center;
+  align-self: center;
+  align-items: center;
+  justify-content: space-between !important;
+  flex-grow: 1;
+  display: flex;
+  margin: 1rem 1.5rem;
 }
-.navigation {
+ul.navigation {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: sticky;
   list-style-type: none;
   margin: 0;
   padding: 0px;
   overflow: hidden;
-  background-color: white;
+  font-size: 30px;
 }
 .navigation li {
   float: left;
-  border-right: 1px solid rgb(139, 138, 138);
 }
 .navigation li:last-child {
   float: right;
-  border-left: 1px solid rgb(139, 138, 138);
-  border-right: none;
+}
+.navigation li:nth-child(3) {
+  display: inline;
 }
 .navigation a {
   display: block;
   padding: 16px 20px;
-  color: black;
+  color: rgb(252, 250, 250);
   text-align: center;
   text-decoration: none;
 }
@@ -41,11 +50,11 @@ p.intro {
   padding: 10px;
   border-radius: 8px;
 }
-.btn {
-  border-radius: 8px;
-  background-image: linear-gradient(rgb(84, 240, 240), rgb(29, 218, 145));
-  border: 1px solid white;
+.logoImg {
+  max-width: 250px;
+  max-height: 100px;
 }
+
 @media (min-width: 1100px) and (min-height: 720px) {
   .html {
     width: 900px;

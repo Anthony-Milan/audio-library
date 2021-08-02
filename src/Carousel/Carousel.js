@@ -2,6 +2,7 @@ import Card from "../Card/Card";
 import { Slide } from "pure-react-carousel";
 import React, {Component} from 'react';
 import getAlbums from '../services';
+import styles from './Carousel.module.css';
 class Carousel extends Component{
   /**
   * array of data used to generate the cards
@@ -16,7 +17,7 @@ class Carousel extends Component{
   if(this.state.albumArray){
   return this.state.albumArray.map((album, index) => {
     return (
-      <Slide key={album._id}>
+      <Slide className={styles.slide} key={album._id}>
         <Card
           showNumberbOfTracks={album.showNbOfTracks}
           numberOfTracks={album.nbOfTracks}
