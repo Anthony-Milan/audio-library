@@ -8,32 +8,39 @@ ul.navigation {
   overflow: hidden;
   font-size: 30px;
   box-sizing: border-box;
-  background-color: rgb(18, 33, 80);
+  background-color: #ed5901;
 }
 .navigation li {
-  height: fit-content;
+  display: block;
   float: right;
-  max-height: 51px;
-  max-width: 200px;
 }
 .navigation li:first-child {
   float: left;
 }
 .navigation a {
   display: block;
-  padding: 16px 20px;
-  color: rgb(252, 250, 250);
+  padding: 10px 20px;
+  color: #250004;
   text-align: center;
   text-decoration: none;
   font-size: 20px;
 }
 .navigation a:hover {
-  background-color: rgba(117, 116, 115, 0.87);
-  color: white;
+  background-color: #250004;
+  color: #bd3100;
   cursor: pointer;
 }
 .logoImg {
-  width: fit-content;
+  display: block;
+  width: 125px;
+  height: 45px;
+}
+.notFound {
+  font-family: "Times New Roman", Times, serif;
+  float: left;
+  margin: 30px;
+  padding: 10px;
+  color: #85a8f5;
 }
 
 @media only screen and (max-width: 900px) {

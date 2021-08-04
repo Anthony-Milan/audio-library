@@ -9,15 +9,17 @@ button {
   height: 60px;
   border-radius: 35%;
   opacity: 0.8;
-  color: white;
-  background-color: rgb(18, 33, 80);
+  color: #250004;
+  background-color: #ed5901;
   border: none;
 }
 button:hover {
   opacity: 1;
+  color: #ed5901;
+  background-color: #250004;
 }
 .buttonPrev {
-  transition: all 0.5s;
+  transition: all 0.1s;
   position: absolute;
   left: 20px;
   top: 200px;
@@ -33,7 +35,7 @@ button:hover {
 }
 
 .buttonNext {
-  transition: all 0.5s;
+  transition: all 0.1s;
   position: absolute;
   right: 20px;
   top: 200px;

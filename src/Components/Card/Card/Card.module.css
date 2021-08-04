@@ -4,8 +4,7 @@
   max-height: 380px;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0px 0px 10px 3px rgba(247, 245, 245, 0.2),
-    0px 0px 16px 4px rgba(255, 255, 255, 0.19);
+  box-shadow: 0px 0px 6px 3px rgba(247, 245, 245, 0.2), 0px 0px 8px 4px #85a8f5;
   margin-top: 20px;
   text-align: center;
   overflow: hidden;
@@ -15,6 +14,7 @@
   text-align: center;
   padding: 10px 20px;
   font-size: 20px;
+  color: #250004;
 }
 img {
   width: 100%;
