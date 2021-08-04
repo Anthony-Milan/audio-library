@@ -1,15 +1,16 @@
-import HomePage from "./homePage/homePage";
 import "./App.css";
-import DemoCarousel from "./Carousel/CarouselProvider";
 import React, { Component } from "react";
+import {BrowserRouter} from 'react-router-dom';
 
+import NavBar from "./Components/Card/navBar/navBar";
 class App extends Component {
   render() {
     return (
+      <BrowserRouter>
       <div className="App">
-        <HomePage/>
-        <DemoCarousel />
+      <NavBar/>
       </div>
+      </BrowserRouter>
     );
   }
 }

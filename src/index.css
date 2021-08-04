@@ -26,11 +26,18 @@ code {
 }
 .sliderTray___-vHFQ.sliderAnimation___300FY.carousel__slider-tray.carousel__slider-tray--horizontal {
   position: absolute;
-  left: 33%;
+  left: 38%;
 }
-@media only screen and (max-width: 500px) and (max-height: 900px) {
+@media only screen and (max-width: 900px) {
   html {
-    background-image: url("./images/PhoneBg.jpg");
+    background-image: url("./images/background\ tablet.png");
+    background-size: cover;
+    max-height: 830px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  html {
+    background-image: url("./images/backgroundPhones.png");
     background-size: cover;
     max-height: 830px;
   }
