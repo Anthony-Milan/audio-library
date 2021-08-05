@@ -4,6 +4,7 @@
   box-sizing: border-box;
   width: 100%;
   color: #250004;
+  border-left: 1px solid #250004;
 }
 li.NavItem a {
   box-sizing: border-box;

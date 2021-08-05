@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import styles from "./SignIn.module.css";
-import { NavLink } from "react-router-dom";
+import { Route, NavLink} from "react-router-dom";
+
 import Input from "../../../Components/Card/Input/Input";
-const validEmailRegex = RegExp(
+
+const validEmailRegex = RegExp( // eslint-disable-next-line no-useless-escape
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 );
 class SignIn extends Component {
@@ -14,12 +16,12 @@ class SignIn extends Component {
       password: "",
     },
   };
-  handleSubmit = (event) => {
+  changeHandler = (event) => {
     event.preventDefault();
-    const { input, value } = event.target;
+    const { name, value } = event.target;
     let errors = this.state.errors;
 
-    switch (input) {
+    switch (name) {
       case "email":
         errors.email = validEmailRegex.test(value)
           ? ""
@@ -32,7 +34,7 @@ class SignIn extends Component {
         break;
     }
 
-    this.setState({ errors, [input]: value }, () => {
+    this.setState({ errors, [name]: value }, () => {
       console.log(errors);
     });
   };
@@ -40,22 +42,19 @@ class SignIn extends Component {
   submissionHandler = (event) => {
     event.preventDefault();
     if (this.validateForm(this.state.errors)) {
-      console.info("Valid Form");
+      this.props.history.push('/')
     } else {
-      console.error("Invalid Form");
+      this.props.history.push('/ErrorSignIn');
     }
   };
   validateForm = (errors) => {
     let valid = true;
-    Object.values(errors).forEach(
-      // if we have an error string set valid to false
-      (val) => val.length > 0 && (valid = false)
-    );
+    Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
     return valid;
   };
-
-  render() {
-    const {errors} = this.state;
+  render(){
+    const { errors } = this.state;
+    
     return (
       <div className={styles.Wrapper}>
         <form onSubmit={this.submissionHandler}>
@@ -70,7 +69,7 @@ class SignIn extends Component {
             onChange={this.changeHandler}
             noValidate
           />
-          {errors.email.length > 0 && <span className="errors">{errors.email}</span>}
+          {errors.email.length > 0}
           <Input
             label="Password: "
             inputtype="input"
@@ -81,8 +80,9 @@ class SignIn extends Component {
             onChange={this.changeHandler}
             noValidate
           />
-          {errors.password.length > 0 && <span className="errors">{errors.password}</span>}
-          <Input inputtype="submit" type="submit" value="Sign In" />
+          {errors.password.length > 0}
+          <Input inputtype="submit" type="submit" value="Sign In"  />
+          
         </form>
         <NavLink className={styles.redirect} to="/SignUp">
           New to Audio library? Sign Up here.

@@ -3,7 +3,6 @@
   padding: 0px 10px 6px 10px;
   box-sizing: border-box;
   margin: 5px;
-  border-bottom: 1px solid gray;
 }
 .Label {
   font-weight: bold;
@@ -36,6 +35,7 @@
   margin-top: 0px;
   font-family: inherit;
   font-size: 16px;
+  cursor: pointer;
 }
 .Submit:disabled {
   background-color: white;

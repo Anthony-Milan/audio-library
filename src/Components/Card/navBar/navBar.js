@@ -12,9 +12,15 @@ const AsyncSignIn = asyncComp(() => {
 const AsyncSignUp = asyncComp(() => {
   return import("../../../Pages/SignUp/SignUp");
 });
+const AsyncErrorSignIn = asyncComp(() => {
+  return import("../../../Pages/Errors/Errors");
+});
+const AsyncErrorSignUp = asyncComp(() => {
+  return import("../../../Pages/Errors/ErrorUp");
+});
 class NavBar extends Component {
   render() {
-    return [
+    return( <>
         <header className={styles.Overhead}>
           <MobileToggle clicked={this.props.drawerToggleClicked} />
           <div className={styles.Logo}>
@@ -25,18 +31,20 @@ class NavBar extends Component {
           <nav className={styles.Desktop}>
             <NavigationItems />
           </nav>
-        </header>,
+        </header>
         <Switch>
           <Route path="/" exact component={DemoCarousel} />
           <Route path="/SignIn" exact component={AsyncSignIn} />
           <Route path="/SignUp" exact component={AsyncSignUp} />
+          <Route path="/ErrorSignIn" component={AsyncErrorSignIn}/>
+          <Route path="/ErrorSignUp" component={AsyncErrorSignUp}/>
           <Route
             exact
             render={() => <h1 className={styles.notFound}>Page not found.</h1>}
           />
         </Switch>
-
-    ]
+        </>
+    )
   }
 }
 export default NavBar;

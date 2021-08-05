@@ -9,8 +9,9 @@ const MobileNav = ({open, closed}) => {
     if(open){
         attachedClasses=[styles.MobileNav, styles.Open];
     }
-    return [
-        <Backdrop show={open} clicked={closed}/>,
+    return (
+        <>
+        <Backdrop show={open} clicked={closed}/>
         <div className={attachedClasses.join(' ')}>
             <div className={styles.Logo}>
             <NavLink to="/">
@@ -22,7 +23,8 @@ const MobileNav = ({open, closed}) => {
             </nav>
             
         </div>
-    ]
+        </>
+    )
     
 };
 

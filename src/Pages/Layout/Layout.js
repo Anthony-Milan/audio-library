@@ -19,17 +19,18 @@ class Layout extends Component {
     }
 
     render () {
-        return [
-            
-                <NavBar drawerToggleClicked={this.sideDrawerToggleHandler} />,
+        
+        return (
+                <>
+                <NavBar drawerToggleClicked={this.sideDrawerToggleHandler} />
                 <MobileNav
                     open={this.state.showSideDrawer}
-                    closed={this.sideDrawerClosedHandler} />,
+                    closed={this.sideDrawerClosedHandler} />
                 <main className={styles.Content}>
                     {this.props.children}
                 </main>
-            
-        ]
+                </>        
+           )
     }
 }
 
