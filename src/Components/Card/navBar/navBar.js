@@ -1,47 +1,42 @@
 import React, { Component } from "react";
-import styles from "./navBar.module.css";
-import { Route, NavLink, Switch } from "react-router-dom";
+import styles from "./NavBar.module.css";
+import { Route, Switch,NavLink} from "react-router-dom";
 import DemoCarousel from "../Carousel/CarouselProvider";
+import MobileToggle from "./Mobile/MobileToggle";
+import Logo from "../Logo";
 import asyncComp from "../../../hoc/asyncComp";
-
+import NavigationItems from "./NavigationItems";
 const AsyncSignIn = asyncComp(() => {
-  return import("../../../Pages//SignIn/SignIn/SignIn");
+  return import("../../../Pages/SignIn/SignIn/SignIn");
+});
+const AsyncSignUp = asyncComp(() => {
+  return import("../../../Pages/SignUp/SignUp");
 });
 class NavBar extends Component {
   render() {
-    return (
-      <div className={styles.overhead}>
-        <header>
-          <nav>
-            <ul className={styles.navigation}>
-              <li>
-                <NavLink to="/">
-                  <img
-                    className={styles.logoImg}
-                    src="Audio-Library Logo.png"
-                    alt="Logo"
-                  />
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/SignIn">Sign In</NavLink>
-              </li>
-              <li>
-                <NavLink to="/SignUp">Sign Up </NavLink>
-              </li>
-            </ul>
+    return [
+        <header className={styles.Overhead}>
+          <MobileToggle clicked={this.props.drawerToggleClicked} />
+          <div className={styles.Logo}>
+          <NavLink to="/">
+            <Logo/>
+            </NavLink>
+          </div>
+          <nav className={styles.Desktop}>
+            <NavigationItems />
           </nav>
-        </header>
+        </header>,
         <Switch>
           <Route path="/" exact component={DemoCarousel} />
           <Route path="/SignIn" exact component={AsyncSignIn} />
+          <Route path="/SignUp" exact component={AsyncSignUp} />
           <Route
             exact
             render={() => <h1 className={styles.notFound}>Page not found.</h1>}
           />
         </Switch>
-      </div>
-    );
+
+    ]
   }
 }
 export default NavBar;

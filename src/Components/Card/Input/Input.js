@@ -9,6 +9,9 @@ const Input=(props)=> {
         case('textarea'):
             inputElem=<textarea className={styles.InputElem}{...props}/>;
             break;
+        case('submit'):
+            inputElem=<input className={styles.Submit}{...props}/>
+            break;
         default:
             inputElem=<input className={styles.InputElem} {...props}/>
             break;

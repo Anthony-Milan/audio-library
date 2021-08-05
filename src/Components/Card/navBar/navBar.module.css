@@ -1,93 +1,26 @@
-ul.navigation {
+.Overhead {
+  height: 56px;
   width: 100%;
-  height: fit-content;
-  justify-content: center;
-  list-style-type: none;
-  margin: 0px;
-  padding: 0px;
-  overflow: hidden;
-  font-size: 30px;
-  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
   background-color: #ed5901;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 100;
 }
-.navigation li {
-  display: block;
-  float: right;
+.Overhead nav {
+  height: 100%;
 }
-.navigation li:first-child {
-  float: left;
+.Logo {
+  max-height: 100%;
+  max-width: 100%;
 }
-.navigation a {
-  display: block;
-  padding: 10px 20px;
-  color: #250004;
-  text-align: center;
-  text-decoration: none;
-  font-size: 20px;
-}
-.navigation a:hover {
-  background-color: #250004;
-  color: #bd3100;
-  cursor: pointer;
-}
-.logoImg {
-  display: block;
-  width: 125px;
-  height: 45px;
-}
-.notFound {
-  font-family: "Times New Roman", Times, serif;
-  float: left;
-  margin: 30px;
-  padding: 10px;
-  color: #85a8f5;
-}
-
-@media only screen and (max-width: 900px) {
-  .html {
-    width: 100%;
-  }
-
-  .logoImg {
-    width: 200px;
-    height: 65px;
-    position: static;
-  }
-  .navigation a {
-    font-size: 16px;
-  }
-}
-@media only screen and (max-width: 700px) {
-  .html {
-    width: 100%;
-  }
-  .navigation li {
-    display: block;
-    float: none;
-    border-bottom: 1px solid white;
-    border-left: none;
-  }
-  .navigation li:first-child {
-    border-bottom: none;
-  }
-  .logoImg {
-    width: 150px;
-    height: 60px;
-    position: static;
-  }
-}
-@media only screen and (max-width: 375px) {
-  .html {
-    width: 100%;
-  }
-  .navigation li {
-    display: block;
-    float: none;
-    border-bottom: 1px solid white;
-  }
-  .logoImg {
-    width: 120px;
-    height: 40px;
-    position: static;
+@media (max-width: 499px) {
+  .Desktop {
+    display: none;
   }
 }

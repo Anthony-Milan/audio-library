@@ -1,14 +1,17 @@
 import "./App.css";
 import React, { Component } from "react";
 import {BrowserRouter} from 'react-router-dom';
+import DemoCarousel from "./Components/Card/Carousel/CarouselProvider";
+import Layout from "./Pages/Layout/Layout";
 
-import NavBar from "./Components/Card/navBar/navBar";
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
       <div className="App">
-      <NavBar/>
+      <Layout/>
+      
+    
       </div>
       </BrowserRouter>
     );

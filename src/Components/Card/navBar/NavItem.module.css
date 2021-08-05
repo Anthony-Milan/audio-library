@@ -1,0 +1,46 @@
+.NavItem {
+  display: block;
+  float: right;
+  box-sizing: border-box;
+  width: 100%;
+  color: #250004;
+}
+li.NavItem a {
+  box-sizing: border-box;
+  display: block;
+  padding: 10px 20px;
+  color: #250004;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+}
+li.NavItem a:hover {
+  background-color: #250004;
+  color: #bd3100;
+  cursor: pointer;
+}
+li.NavItem a:active {
+  background-color: #250004;
+  color: #bd3100;
+  cursor: pointer;
+}
+@media (min-width: 500px) {
+  .NavItem {
+    margin: 0;
+    display: flex;
+    height: 100%;
+    width: auto;
+    align-items: center;
+  }
+  .NavItem a {
+    color: white;
+    height: 100%;
+    padding: 16px 10px;
+    border-bottom: 4px solid transparent;
+  }
+  .NavItem a:hover,
+  .NavItem a.active {
+    background-color: #8f5c2c;
+    color: white;
+  }
+}
