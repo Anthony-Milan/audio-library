@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import styles from "./SignIn.module.css";
-import { Route, NavLink} from "react-router-dom";
-
-import Input from "../../../Components/Card/Input/Input";
+import styles from "./signIn.module.css";
+import {NavLink} from "react-router-dom";
+import axios from "../../../services";
+import Input from "../../../Components/Card/Input/input";
 
 const validEmailRegex = RegExp( // eslint-disable-next-line no-useless-escape
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -15,6 +15,7 @@ class SignIn extends Component {
       email: "",
       password: "",
     },
+    loading: false
   };
   changeHandler = (event) => {
     event.preventDefault();

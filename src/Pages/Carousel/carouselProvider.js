@@ -1,29 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   CarouselProvider,
   Slider,
   ButtonBack,
   ButtonNext,
 } from "pure-react-carousel";
+import axios from "../../services";
 import "pure-react-carousel/dist/react-carousel.es.css";
-import Carousel from "./Carousel";
-import styles from "./Carousel.module.css";
+import Carousel from "../../Components/Card/Carousel/carousel";
+import styles from "./carouselProvider.module.css";
 
-const DemoCarousel = () => {
-  // Variable used to track the current slider index
+const AlbumCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  // Variable used to show/hide the track numbers
   const [show, setShow] = useState(false);
+  const [albums, setAlbums] = useState([]);
+  const [selectedCard, setSelectedCard]=useState(null);
 
-  /**
-   * toggleTracksHandler
-   *
-   * function to toggle the text of the show tracks button
-   */
+
+  useEffect(() => {
+    axios.get('https://audio-library-ed318-default-rtdb.europe-west1.firebasedatabase.app/albums.json')
+    .then((response)=>{
+      console.log("ALBUMSS", response)
+      setAlbums(response.data)})
+  }, [])
+  console.log(albums)
+
   const toggleTracksHandler = () => {
     setShow((prev) => !prev);
   };
-
+  const getAlbumDetailsHandler=(id)=>{
+    setSelectedCard(id);
+  };
   return (
     <CarouselProvider
       className={styles.carousel}
@@ -36,7 +43,15 @@ const DemoCarousel = () => {
         {show ? "Hide Tracks" : "Show Tracks"}
       </button>
       <Slider className={styles.slider}>
-        <Carousel currentIndex={currentIndex} show={show} />
+        {albums.map((albums, index) => (
+          <Carousel
+            current={currentIndex}
+            show={show}
+            album={albums}
+            key={albums.num}
+            clicked={()=>getAlbumDetailsHandler(albums.num)}
+          />
+        ))}
       </Slider>
 
       <ButtonBack
@@ -55,4 +70,4 @@ const DemoCarousel = () => {
     </CarouselProvider>
   );
 };
-export default DemoCarousel;
+export default AlbumCarousel;

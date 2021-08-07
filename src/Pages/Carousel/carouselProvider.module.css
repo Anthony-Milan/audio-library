@@ -1,0 +1,85 @@
+button {
+  font-family: "Lobster Two", cursive;
+  font-style: italic;
+  font-size: 20px;
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  width: 120px;
+  height: 60px;
+  border-radius: 35%;
+  opacity: 0.8;
+  color: #250004;
+  background-color: #ed5901;
+  border: none;
+}
+button:hover {
+  opacity: 1;
+  color: #ed5901;
+  background-color: #250004;
+}
+.buttonPrev {
+  transition: all 0.1s;
+  position: absolute;
+  left: 20px;
+  top: 200px;
+}
+.buttonPrev span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.buttonPrev:hover span {
+  padding-right: 25px;
+}
+
+.buttonNext {
+  transition: all 0.1s;
+  position: absolute;
+  right: 20px;
+  top: 200px;
+}
+.buttonNext span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.buttonNext:hover span {
+  padding-left: 25px;
+}
+.carousel {
+  width: 100%;
+  height: 500px;
+  margin-top: 90px;
+  position: relative;
+}
+.slider {
+  position: relative;
+}
+@media only screen and (max-width: 900px) {
+  button {
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+  }
+  .slide {
+    margin-right: 30px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  button {
+    width: 80px;
+    height: 30px;
+    font-size: 14px;
+  }
+  .slide {
+    margin-right: 20px;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .slide {
+    margin-right: 10px;
+  }
+}

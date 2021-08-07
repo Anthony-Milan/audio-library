@@ -1,12 +1,12 @@
 import React from "react";
-import styles from "./Card.module.css";
-const Card = ({source, cardTitle, band, name, numberOfTracks, showNumberOfTracks}) => {
+import styles from "./card.module.css";
+const Card = ({source,release, cardTitle, band, name, numberOfTracks, showNumberOfTracks, clicked}) => {
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={clicked}>
       <img src={source} alt="Album Cover" />
       <div className={styles.cardTitle}>
         <p>
-          {band} - {name}
+          {band} - {name} - {release}
         </p>
         <p>{showNumberOfTracks ? `Number Of Tracks: #${numberOfTracks}` : ""}</p>
       </div>

@@ -4,9 +4,10 @@
   box-sizing: border-box;
   width: 100%;
   color: #250004;
-  border-left: 1px solid #250004;
+  border-bottom: 1px solid #250004;
+  border-left: none;
 }
-li.NavItem a {
+.NavItem a {
   box-sizing: border-box;
   display: block;
   padding: 10px 20px;
@@ -15,12 +16,12 @@ li.NavItem a {
   text-decoration: none;
   font-size: 20px;
 }
-li.NavItem a:hover {
+.NavItem a:hover {
   background-color: #250004;
   color: #bd3100;
   cursor: pointer;
 }
-li.NavItem a:active {
+.NavItem a:active {
   background-color: #250004;
   color: #bd3100;
   cursor: pointer;
@@ -29,19 +30,21 @@ li.NavItem a:active {
   .NavItem {
     margin: 0;
     display: flex;
-    height: 100%;
+    height: inherit;
     width: auto;
     align-items: center;
+    border-left: 1px solid #250004;
+    border-bottom: none;
   }
   .NavItem a {
-    color: white;
-    height: 100%;
+    color: #250004;
+    height: inherit;
     padding: 16px 10px;
     border-bottom: 4px solid transparent;
   }
   .NavItem a:hover,
-  .NavItem a.active {
-    background-color: #8f5c2c;
-    color: white;
+  .NavItem a:active {
+    background-color: #250004;
+    color: #bd3100;
   }
 }

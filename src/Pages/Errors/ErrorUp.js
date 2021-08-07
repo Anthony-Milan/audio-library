@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {NavLink} from "react-router-dom";
-import styles from "./Errors.module.css";
+import styles from "./errors.module.css";
 class Errors extends Component {
     render() {
         return (

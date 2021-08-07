@@ -4,9 +4,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 20px;
-  width: auto;
-  margin: 80px auto;
+  padding: 10px;
+  width: 250px;
+  margin: 120px auto;
   border-radius: 12px;
   box-shadow: 0px 0px 6px 3px rgba(247, 245, 245, 0.2), 0px 0px 8px 4px #85a8f5;
 }
@@ -16,7 +16,10 @@ h2 {
   color: #ed5901;
   margin: 0px;
 }
-
 a.redirect:active {
   color: #ed5901;
+}
+p {
+  font-size: 18px;
+  text-align: center;
 }

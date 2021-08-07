@@ -1,15 +1,14 @@
-import React, { Component } from "react";
-import styles from "./NavigationItems.module.css";
-import NavItem from "./NavItem";
-export default class NavigationItems extends Component {
-  render() {
+import React from "react";
+import styles from "./navigationItems.module.css";
+import NavItem from "./navItem";
+const NavigationItems = ({clicked}) => {
     return (
-      <div>
-        <ul className={styles.Navigation}>
+      <div className={styles.ulWrap} >
+        <ul className={styles.Navigation} onClick={clicked}>
           <NavItem link="/SignUp">Sign Up</NavItem>
           <NavItem link="/SignIn">Sign in</NavItem>
         </ul>
       </div>
     );
   }
-}
+  export default NavigationItems;

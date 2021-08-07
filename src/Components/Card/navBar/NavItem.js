@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './NavItem.module.css';
+import styles from './navItem.module.css';
 import {NavLink} from "react-router-dom";
 const NavItem = ( {link, children} ) => (
     <li className={styles.NavItem}>
-        <NavLink to={link}>{children}</NavLink>
+        <NavLink activeClassName='active' activeStyle={{color: "#bd3100", backgroundColor:"white"}} to={link}>{children}</NavLink>
     </li>
 );
 

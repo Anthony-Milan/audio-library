@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "./Input.module.css"
+import styles from "./input.module.css"
 const Input=(props)=> {
     let inputElem= null;
     switch (props.inputtype) {
@@ -10,7 +10,7 @@ const Input=(props)=> {
             inputElem=<textarea className={styles.InputElem}{...props}/>;
             break;
         case('submit'):
-            inputElem=<input className={styles.Submit}{...props}/>
+            inputElem=<input className={styles.Submit}onClick={props.checkTooltip}{...props}/>
             break;
         default:
             inputElem=<input className={styles.InputElem} {...props}/>

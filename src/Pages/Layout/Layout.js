@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import styles from './Layout.module.css';
-import NavBar from '../../Components/Card/navBar/NavBar';
-import MobileNav from '../../Components/Card/navBar/Mobile/MobileNav';
+import styles from './layout.module.css';
+import NavBar from '../../Components/Card/navBar/navBar';
+import MobileNav from '../../Components/Card/navBar/Mobile/mobileNav';
 
 class Layout extends Component {
     state = {

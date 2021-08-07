@@ -11,7 +11,12 @@
   box-sizing: border-box;
   transition: transform 0.3s ease-out;
 }
-
+.Logo {
+  border-bottom: 1px solid #250004;
+}
+#mobileNavItems a {
+  border-bottom: 1px solid #250004;
+}
 @media (min-width: 500px) {
   .MobileNav {
     display: none;

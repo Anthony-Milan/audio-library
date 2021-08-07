@@ -11,6 +11,7 @@
   float: left;
   color: #ed5901;
   padding-top: 5px;
+  text-decoration: underline 1px solid #250004;
 }
 .InputElem {
   outline: none;
