@@ -7,7 +7,7 @@ import Loader from "./Components/Card/Loader/loader";
 const SignIn = React.lazy(() => import("./Pages/SignIn/SignIn/signIn"));
 const SignUp = React.lazy(() => import("./Pages/SignUp/signUp"));
 const AlbumDetails = React.lazy(() =>
-  import("./Pages/AlbumDetail/albumDetail")
+  import("./Pages/AlbumDetail/albumDetails")
 );
 const AlbumCarousel = React.lazy(() =>
   import("./Pages/Carousel/carouselProvider")
@@ -50,17 +50,17 @@ class App extends Component {
               </Suspense>
             )}
           />
-          <Route path="/ErrorSignIn" component={AsyncErrorSignIn} />
-          <Route path="/ErrorSignUp" component={AsyncErrorSignUp} />
           <Route
-            path="/:id"
-            exact
+            path="/albums/:id"
             render={() => (
               <Suspense fallback={<Loader />}>
                 <AlbumDetails />
               </Suspense>
             )}
           />
+          <Route path="/ErrorSignIn" component={AsyncErrorSignIn} />
+          <Route path="/ErrorSignUp" component={AsyncErrorSignUp} />
+
           <Route
             exact
             render={() => <h1 className="notFound">Page not found.</h1>}

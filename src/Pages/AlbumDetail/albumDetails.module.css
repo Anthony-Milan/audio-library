@@ -1,0 +1,80 @@
+.Wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  height: fit-content;
+  width: 100%;
+}
+
+.AlbumCover {
+  border-radius: 20px;
+  overflow: hidden;
+  flex: inherit;
+  margin: 20px;
+  height: 302px;
+  width: 300px;
+}
+img.AlbumCoverIMG {
+  height: 300px;
+  width: 320px;
+}
+.Title {
+  flex: inherit;
+  color: #bd3100;
+  margin: 50px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px 40px;
+  box-shadow: 0px 0px 6px 3px rgba(247, 245, 245, 0.2), 0px 0px 8px 4px #85a8f5;
+  text-decoration: underline 1px solid #250004;
+}
+h2 {
+  border-bottom: none;
+}
+@media only screen and (max-width: 700px) {
+  .Wrapper {
+    top: 20%;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 70px;
+  }
+  .Title {
+    margin: 0px;
+  }
+  .AlbumCover {
+    border-radius: 20px;
+    overflow: hidden;
+    flex: inherit;
+    margin: 20px;
+    height: 250px;
+  }
+  img.AlbumCoverIMG {
+    height: 300px;
+    width: 300px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .Wrapper {
+    top: 50%;
+    flex-direction: column;
+    height: 100%;
+    margin-top: 70px;
+  }
+  .Title {
+    margin: 0px;
+  }
+  .AlbumCover {
+    border-radius: 20px;
+    overflow: hidden;
+    flex: inherit;
+    margin: 20px;
+    height: 250px;
+  }
+  img.AlbumCoverIMG {
+    height: 300px;
+    width: 300px;
+  }
+}

@@ -26,6 +26,7 @@ code {
 }
 .sliderTray___-vHFQ.sliderAnimation___300FY.carousel__slider-tray.carousel__slider-tray--horizontal {
   position: absolute;
+  height: fit-content;
   left: 38%;
 }
 @media only screen and (max-width: 700px) {

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./card.module.css";
-const Card = ({source,release, cardTitle, band, name, numberOfTracks, showNumberOfTracks, clicked}) => {
+const Card = ({source,release, cardTitle, band, name, numberOfTracks, show, clicked}) => {
   return (
     <div className={styles.card} onClick={clicked}>
       <img src={source} alt="Album Cover" />
@@ -8,7 +8,7 @@ const Card = ({source,release, cardTitle, band, name, numberOfTracks, showNumber
         <p>
           {band} - {name} - {release}
         </p>
-        <p>{showNumberOfTracks ? `Number Of Tracks: #${numberOfTracks}` : ""}</p>
+        <p>{show ? `Number Of Tracks: #${numberOfTracks}` : ""}</p>
       </div>
     </div>
   );

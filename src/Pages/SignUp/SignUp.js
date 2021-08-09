@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,withRouter } from "react-router-dom";
 import Input from "../../Components/Card/Input/input";
 import styles from "./signUp.module.css";
 import axios from "../../services";
@@ -9,7 +9,7 @@ const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 ); // eslint-disable-next-line no-useless-escape
 const validNameRegex = RegExp(/^[a-z ,.'-]+$/i);
-export default class SignUp extends Component {
+class SignUp extends Component {
   state = {
     password: "",
     confirmPass: "",
@@ -74,7 +74,7 @@ export default class SignUp extends Component {
       .catch(error=>{
         this.setState({loading:false})
       })
-      this.history.push("/");
+      this.props.history.push("/");
     } else {
       this.showTooltip(true);
     }
@@ -157,9 +157,10 @@ export default class SignUp extends Component {
           <Input inputtype="submit" type="submit" value="Sign Up" />
         </form>
         <NavLink className={styles.redirect} to="/SignIn">
-          <p>Already have an account? Sign In here.</p>
+          Already have an account? Sign In here.
         </NavLink>
       </div>
     );
   }
 }
+export default withRouter(SignUp)

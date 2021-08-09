@@ -58,6 +58,7 @@ button:hover {
 .slider {
   position: relative;
 }
+
 @media only screen and (max-width: 900px) {
   button {
     width: 100px;

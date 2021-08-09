@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from "./signIn.module.css";
-import {NavLink} from "react-router-dom";
+import {NavLink, withRouter} from "react-router-dom";
 import axios from "../../../services";
 import Input from "../../../Components/Card/Input/input";
 
@@ -82,7 +82,7 @@ class SignIn extends Component {
             noValidate
           />
           {errors.password.length > 0}
-          <Input inputtype="submit" type="submit" value="Sign In"  />
+          <Input inputtype="submit" type="submit" value="Sign In" />
           
         </form>
         <NavLink className={styles.redirect} to="/SignUp">
@@ -92,4 +92,4 @@ class SignIn extends Component {
     );
   }
 }
-export default SignIn;
+export default withRouter(SignIn);

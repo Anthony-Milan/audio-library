@@ -9,29 +9,28 @@ import axios from "../../services";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import Carousel from "../../Components/Card/Carousel/carousel";
 import styles from "./carouselProvider.module.css";
-
-const AlbumCarousel = () => {
+import {withRouter} from "react-router-dom"
+const AlbumCarousel = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false );
   const [albums, setAlbums] = useState([]);
-  const [selectedCard, setSelectedCard]=useState(null);
 
 
   useEffect(() => {
     axios.get('https://audio-library-ed318-default-rtdb.europe-west1.firebasedatabase.app/albums.json')
     .then((response)=>{
-      console.log("ALBUMSS", response)
       setAlbums(response.data)})
   }, [])
-  console.log(albums)
 
   const toggleTracksHandler = () => {
     setShow((prev) => !prev);
+    console.log(show)
   };
   const getAlbumDetailsHandler=(id)=>{
-    setSelectedCard(id);
+    props.history.push('/albums/' + (id))
   };
   return (
+    <>
     <CarouselProvider
       className={styles.carousel}
       naturalSlideWidth={100}
@@ -39,7 +38,7 @@ const AlbumCarousel = () => {
       totalSlides={10}
       visibleSlides={3}
     >
-      <button id="tracks" onClick={toggleTracksHandler}>
+      <button className={styles.Tracks} onClick={toggleTracksHandler}>
         {show ? "Hide Tracks" : "Show Tracks"}
       </button>
       <Slider className={styles.slider}>
@@ -53,7 +52,6 @@ const AlbumCarousel = () => {
           />
         ))}
       </Slider>
-
       <ButtonBack
         className={styles.buttonPrev}
         onClick={() => setCurrentIndex(currentIndex - 1)}
@@ -68,6 +66,7 @@ const AlbumCarousel = () => {
         <span>Next</span>
       </ButtonNext>
     </CarouselProvider>
+    </>
   );
 };
-export default AlbumCarousel;
+export default withRouter(AlbumCarousel);
