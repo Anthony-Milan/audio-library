@@ -1,6 +1,6 @@
 import * as actionTypes from "../actions/actionTypes";
 const initialState={
-    albums:null,
+    albums:[],
     error:false
 }
 const reducer = (state=initialState, action)=>{

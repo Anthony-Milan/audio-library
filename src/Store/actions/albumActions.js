@@ -1,10 +1,10 @@
 import * as actionTypes from "./actionTypes";
 import axios from "../../services"
 
-export const fetchAlbums = (albums)=>{
+export const fetchAlbums = (fetchedAlbums)=>{
     return{
         type: actionTypes.FETCH_ALBUMS,
-        albums: albums
+        albums: fetchedAlbums
     }
 }
 export const fetchAlbumsFailed = ()=>{

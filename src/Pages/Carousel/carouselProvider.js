@@ -5,7 +5,6 @@ import {
   ButtonBack,
   ButtonNext,
 } from "pure-react-carousel";
-import axios from "../../services";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import Carousel from "../../Components/Card/Carousel/carousel";
 import styles from "./carouselProvider.module.css";
@@ -16,12 +15,11 @@ import * as albumActions from "../../Store/actions/albumActions";
 const AlbumCarousel = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [show, setShow] = useState(false );
-  const [albums, setAlbums] = useState([]);
 
 
   useEffect(() => {
     props.onInitAlbums()
-  }, [])
+  })
 
   const toggleTracksHandler = () => {
     setShow((prev) => !prev);
@@ -43,7 +41,7 @@ const AlbumCarousel = (props) => {
         {show ? "Hide Tracks" : "Show Tracks"}
       </button>
       <Slider className={styles.slider}>
-        {albums.map((albums, index) => (
+        {props.albums.map((albums, index) => (
           <Carousel
             current={currentIndex}
             show={show}
