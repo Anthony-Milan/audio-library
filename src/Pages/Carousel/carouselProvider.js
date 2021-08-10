@@ -10,6 +10,9 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 import Carousel from "../../Components/Card/Carousel/carousel";
 import styles from "./carouselProvider.module.css";
 import {withRouter} from "react-router-dom"
+import {connect } from "react-redux";
+import * as albumActions from "../../Store/actions/albumActions";
+
 const AlbumCarousel = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [show, setShow] = useState(false );
@@ -17,9 +20,7 @@ const AlbumCarousel = (props) => {
 
 
   useEffect(() => {
-    axios.get('https://audio-library-ed318-default-rtdb.europe-west1.firebasedatabase.app/albums.json')
-    .then((response)=>{
-      setAlbums(response.data)})
+    props.onInitAlbums()
   }, [])
 
   const toggleTracksHandler = () => {
@@ -69,4 +70,15 @@ const AlbumCarousel = (props) => {
     </>
   );
 };
-export default withRouter(AlbumCarousel);
+const mapStateToProps = state => {
+    return {
+        albums: state.albums,
+        error: state.error
+    };
+}
+const mapDispatchToProps = dispatch => {
+  return{
+    onInitAlbums: ()=> dispatch(albumActions.initializeAlbums())
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AlbumCarousel));
