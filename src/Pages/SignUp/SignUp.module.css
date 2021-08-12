@@ -30,3 +30,7 @@ p {
   font-size: 18px;
   text-align: center;
 }
+.error {
+  text-align: center;
+  color: red;
+}

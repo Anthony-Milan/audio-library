@@ -19,7 +19,7 @@ class NavBar extends Component {
             </NavLink>
           </div>
           <nav className={styles.Desktop}>
-            <NavigationItems />
+            <NavigationItems isAuth={this.props.isAuth}/>
           </nav>
         </header>
         

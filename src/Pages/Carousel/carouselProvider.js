@@ -11,15 +11,14 @@ import styles from "./carouselProvider.module.css";
 import {withRouter} from "react-router-dom"
 import {connect } from "react-redux";
 import * as albumActions from "../../Store/actions/albumActions";
+import Loader from "../../Components/Card/Loader/loader"
 
 const AlbumCarousel = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [show, setShow] = useState(false );
-
-
   useEffect(() => {
     props.onInitAlbums()
-  })
+  },[])
 
   const toggleTracksHandler = () => {
     setShow((prev) => !prev);
@@ -28,6 +27,9 @@ const AlbumCarousel = (props) => {
   const getAlbumDetailsHandler=(id)=>{
     props.history.push('/albums/' + (id))
   };
+  if(props.loading){
+    return (<Loader/>)
+  }
   return (
     <>
     <CarouselProvider
@@ -68,10 +70,11 @@ const AlbumCarousel = (props) => {
     </>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
-        albums: state.albums,
-        error: state.error
+        albums: state.album.albums,
+        error: state.album.error,
+        loading: state.album.loading
     };
 }
 const mapDispatchToProps = dispatch => {

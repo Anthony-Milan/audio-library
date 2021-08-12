@@ -4,7 +4,7 @@ import NavigationItems from "../navigationItems";
 import styles from "./mobileNav.module.css";
 import Backdrop from "../../../../images/Backdrop.js";
 import { NavLink } from "react-router-dom";
-const MobileNav = ({open, closed}) => {
+const MobileNav = ({open, closed, isAuth}) => {
     let attachedClasses = [styles.MobileNav, styles.Closed];
     if(open){
         attachedClasses=[styles.MobileNav, styles.Open];
@@ -19,7 +19,7 @@ const MobileNav = ({open, closed}) => {
             </NavLink>
             </div>
             <nav>
-            <NavigationItems id="mobileNavItems" clicked={closed} className={styles.MobileNavItem}/>
+            <NavigationItems id="mobileNavItems" isAuth={isAuth}clicked={closed} className={styles.MobileNavItem}/>
             </nav>
             
         </div>

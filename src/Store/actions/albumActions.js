@@ -1,25 +1,40 @@
 import * as actionTypes from "./actionTypes";
-import axios from "../../services"
+import axios from "../../services";
 
-export const fetchAlbums = (fetchedAlbums)=>{
-    return{
-        type: actionTypes.FETCH_ALBUMS,
-        albums: fetchedAlbums
-    }
-}
-export const fetchAlbumsFailed = ()=>{
-    return{
-        type: actionTypes.FETCH_ALBUMS_FAILED
-    }
-}
-export const initializeAlbums =()=>{
-    return dispatch =>{
-        axios.get( 'https://audio-library-ed318-default-rtdb.europe-west1.firebasedatabase.app/albums.json')
-            .then( response => {
-               dispatch(fetchAlbums(response.data));
-            } )
-            .catch( error => {
-                dispatch(fetchAlbumsFailed());
-            } )
-    }
-}
+export const fetchAlbumsSuccess = (Albums) => {
+  return {
+    type: actionTypes.FETCH_ALBUMS_SUCCESS,
+    albums: Albums,
+  };
+};
+export const fetchAlbumsStart = () => {
+  return {
+    type: actionTypes.FETCH_ALBUMS_START,
+  };
+};
+export const fetchAlbumsFailed = (error) => {
+  return {
+    type: actionTypes.FETCH_ALBUMS_FAILED,
+    error: error,
+  };
+};
+export const initializeAlbums = () => {
+  return (dispatch) => {
+    dispatch(fetchAlbumsStart());
+    axios
+      .get(
+        "https://audio-library-ed318-default-rtdb.europe-west1.firebasedatabase.app/albums.json"
+      )
+      .then((response) => {
+        const fetchedAlbums = [];
+        for (let key in response.data) {
+          fetchedAlbums.push({ ...response.data[key], id: key });
+        }
+        dispatch(fetchAlbumsSuccess(fetchedAlbums));
+      }
+      )
+      .catch((error) => {
+        dispatch(fetchAlbumsFailed(error));
+      });
+  };
+};

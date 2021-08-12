@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './layout.module.css';
 import NavBar from '../../Components/Card/navBar/navBar';
 import MobileNav from '../../Components/Card/navBar/Mobile/mobileNav';
-
+import {connect} from "react-redux";
 class Layout extends Component {
     state = {
         showSideDrawer: false
@@ -22,8 +22,9 @@ class Layout extends Component {
         
         return (
                 <>
-                <NavBar drawerToggleClicked={this.sideDrawerToggleHandler} />
+                <NavBar isAuth={this.props.isAuth} drawerToggleClicked={this.sideDrawerToggleHandler} />
                 <MobileNav
+                isAuth={this.props.isAuth}
                     open={this.state.showSideDrawer}
                     closed={this.sideDrawerClosedHandler} />
                 <main className={styles.Content}>
@@ -33,5 +34,9 @@ class Layout extends Component {
            )
     }
 }
-
-export default Layout;
+const mapStateToProps = state =>{
+    return{
+        isAuth: state.auth.token !== null
+    }
+}
+export default connect(mapStateToProps)(Layout);

@@ -25,3 +25,7 @@ a.redirect {
 a.redirect:active {
   color: #ed5901;
 }
+.error {
+  text-align: center;
+  color: red;
+}

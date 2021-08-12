@@ -5,15 +5,21 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
 import {Provider} from "react-redux"
-import {createStore, applyMiddleware, compose} from "redux";
+import {combineReducers, createStore, applyMiddleware, compose} from "redux";
 import thunk from "redux-thunk"
-import reducer from "./Store/reducers/reducer";
+import albumReducer from "./Store/reducers/albumReds";
+import authReducer from"./Store/reducers/auth"
+
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducer, composeEnhancers(
+
+const rootReducer = combineReducers({
+  album: albumReducer,
+  auth: authReducer
+})
+const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(thunk)
 ));
-
-axios.defaults.headers.post["Content-Type"] = "application/json";
 axios.interceptors.request.use(
   (request) => {
     console.log(request);
@@ -24,11 +30,9 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-
 axios.interceptors.response.use(
   (response) => {
     console.log(response);
-    // Edit request config
     return response;
   },
   (error) => {

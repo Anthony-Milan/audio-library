@@ -12,12 +12,7 @@ const AlbumDetails = React.lazy(() =>
 const AlbumCarousel = React.lazy(() =>
   import("./Pages/Carousel/carouselProvider")
 );
-const AsyncErrorSignIn = asyncComp(() => {
-  return import("./Pages/Errors/errors");
-});
-const AsyncErrorSignUp = asyncComp(() => {
-  return import("./Pages/Errors/errorUp");
-});
+const Logout = React.lazy(()=> import("./Pages/Logout/logout"))
 class App extends Component {
   render() {
     return (
@@ -58,9 +53,14 @@ class App extends Component {
               </Suspense>
             )}
           />
-          <Route path="/ErrorSignIn" component={AsyncErrorSignIn} />
-          <Route path="/ErrorSignUp" component={AsyncErrorSignUp} />
-
+          <Route
+            path="/Logout"
+            exact
+            render={() => (
+              <Suspense fallback={<Loader />}>
+                <Logout />
+              </Suspense>
+            )}/>
           <Route
             exact
             render={() => <h1 className="notFound">Page not found.</h1>}

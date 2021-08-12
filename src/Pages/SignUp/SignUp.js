@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { NavLink,withRouter } from "react-router-dom";
 import Input from "../../Components/Card/Input/input";
 import styles from "./signUp.module.css";
-import axios from "../../services";
+import {connect} from "react-redux"
+import * as actionTypes from "../../Store/actions/authentication"
 import Loader from "../../Components/Card/Loader/loader";
 const validEmailRegex = RegExp(
   // eslint-disable-next-line no-useless-escape
@@ -13,13 +14,13 @@ class SignUp extends Component {
   state = {
     password: "",
     confirmPass: "",
-
     errors: {
       fname: "",
       lname: "",
       email: "",
       password: "",
       confirmPass: "",
+      match: "",
     },
     loading:false,
     tooltip: false,
@@ -28,22 +29,21 @@ class SignUp extends Component {
     event.preventDefault();
     const { name, value } = event.target;
     let errors = this.state.errors;
-    const { password, confirmPass } = this.state;
-    if (password !== confirmPass) {
-      errors.password = "Passwords don't match";
-    }
+    
+    
     switch (name) {
       case "fname":
         errors.fname = validNameRegex.test(value) ? "" : "First Name Invalid";
         break;
       case "lname":
-        errors.fname = validNameRegex.test(value) ? "" : "Last Name Invalid";
+        errors.lname = validNameRegex.test(value) ? "" : "Last Name Invalid";
         break;
       case "email":
         errors.email = validEmailRegex.test(value) ? "" : "Email Invalid";
         break;
       case "password":
         errors.password = value.length < 8 ? "Password Invalid" : "";
+        
         break;
       case "confirmPass":
         errors.confirmPass = value.length < 8 ? "Password Invalid" : "";
@@ -59,48 +59,36 @@ class SignUp extends Component {
 
   submissionHandler = (event) => {
     event.preventDefault();
-    if (!this.validateForm(this.state.errors)) {
+    if (this.validateForm(this.state.errors)) {
       const user={
-        fname: this.state.fname,
-        lname: this.state.lname,
         email: this.state.email,
         password: this.state.password
       }
       this.setState({loading: true})
-      axios.post('https://audio-library-ed318-default-rtdb.europe-west1.firebasedatabase.app/users.json', user)
-      .then(response=>{
-        this.setState({loading: false})
-      })
-      .catch(error=>{
-        this.setState({loading:false})
-      })
-      this.props.history.push("/");
+      this.props.onAuth(user.email, user.password);
     } else {
-      this.showTooltip(true);
+      this.props.authErr(this.state.errors.match)
     }
   };
-  showTooltip = (tooltip) => {
-    if (tooltip) {
-      this.setState((prevState) => {
-        return { tooltip: !prevState.tooltip };
-      });
-    }
-  };
+  
   validateForm = (errors) => {
     let valid = true;
+    if(this.state.password !== this.state.confirmPass){
+      valid = false;
+      this.setState(prevState=>({
+        errors:{
+          ...prevState.errors,
+          match: "Passwords don't match"
+        }
+      }))
+    }
     Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
     return valid;
   };
   render() {
-    if(this.state.loading){
-      <Loader/>
-    }
-    return (
-      
-      <div className={styles.Wrapper}>
-        <form onSubmit={this.submissionHandler}>
-          <h2>Sign Up</h2>
-          <Input
+      let form =(
+        <>
+           <Input
             label="First Name: "
             inputtype="input"
             type="text"
@@ -141,7 +129,7 @@ class SignUp extends Component {
             noValidate
             onChange={this.changeHandler}
             onClick={this.showTooltip}
-          />{" "}
+          />
           <p>Password must contain at least 8 characters.</p>
           <Input
             label="Confirm Password: "
@@ -155,12 +143,41 @@ class SignUp extends Component {
             onChange={this.changeHandler}
           />
           <Input inputtype="submit" type="submit" value="Sign Up" />
-        </form>
+          </>
+      )
+      if (this.props.loading){
+        form = <Loader/>
+      }
+
+      let errorMsg=null;
+      if(this.state.errors.match){
+        errorMsg=(<p className={styles.error}>{this.state.errors.match}</p>)
+      }
+    return (
+      <div className={styles.Wrapper}>
+        <form onSubmit={this.submissionHandler}>
+          <h2>Sign Up</h2>
+          {form}
+          </form>
+          {errorMsg}
         <NavLink className={styles.redirect} to="/SignIn">
           Already have an account? Sign In here.
         </NavLink>
       </div>
+      
     );
   }
 }
-export default withRouter(SignUp)
+const mapStateToProps =state=>{
+  return{
+    loading: state.auth.loading,
+    error:state.auth.error
+  }
+}
+const mapDispatchToProps = dispatch =>{
+  return{
+    onAuth: (email, password)=>dispatch(actionTypes.authenticate(email, password)),
+    authErr: (error)=>dispatch(actionTypes.authInvalid(error))
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUp))
