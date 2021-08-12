@@ -9,12 +9,12 @@ class AlbumDetails extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
+    
     this.loadData();
   }
 
   componentDidUpdate() {
-    console.log(this.props);
+    
     this.loadData();
   }
 
@@ -33,7 +33,7 @@ class AlbumDetails extends Component {
           )
           .then((res) => {
             this.setState({ fullAlbum: res.data });
-            console.log(this.state.fullAlbum);
+            
           });
       }
     }

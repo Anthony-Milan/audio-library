@@ -53,7 +53,6 @@ class SignUp extends Component {
     }
 
     this.setState({ errors, [name]: value }, () => {
-      console.log(errors);
     });
   };
 

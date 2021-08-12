@@ -22,7 +22,7 @@ const AlbumCarousel = (props) => {
 
   const toggleTracksHandler = () => {
     setShow((prev) => !prev);
-    console.log(show)
+   
   };
   const getAlbumDetailsHandler=(id)=>{
     props.history.push('/albums/' + (id))

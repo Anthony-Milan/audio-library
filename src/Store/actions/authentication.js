@@ -42,12 +42,12 @@ export const authenticate = (email, password) => {
     };
     axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCn5bopBDrdjxI-oMayj7MRzSmH6JvRfsc', authData)
     .then(response=>{
-        console.log(response);
+        
         dispatch(authValid(response.data.idToken, response.data.localId ))
         dispatch(checkAuthTimeout(response.data.expiresIn))
     })
     .catch(error=>{
-        console.log(error);
+        
         dispatch(authInvalid(error.response.data.error))
     })
   };
@@ -62,12 +62,12 @@ export const authenticateIn = (email, password)=>{
     };
         axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCn5bopBDrdjxI-oMayj7MRzSmH6JvRfsc", authData)
         .then(response=>{
-        console.log(response);
+        
         dispatch(authValid(response.data.idToken, response.data.localId ));
         
     })
     .catch(error=>{
-        console.log(error);
+        
         dispatch(authInvalid(error.response.data.error))
     })
     }
