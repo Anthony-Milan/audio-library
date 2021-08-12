@@ -62,9 +62,7 @@ export const authenticateIn = (email, password)=>{
     };
         axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCn5bopBDrdjxI-oMayj7MRzSmH6JvRfsc", authData)
         .then(response=>{
-        
-        dispatch(authValid(response.data.idToken, response.data.localId ));
-        
+        dispatch(authValid(response.data.idToken, response.data.localId ));   
     })
     .catch(error=>{
         

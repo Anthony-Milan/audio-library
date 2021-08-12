@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from "./signIn.module.css";
-import {NavLink, withRouter, Redirect} from "react-router-dom";
+import {NavLink, withRouter} from "react-router-dom";
 import Input from "../../../Components/Card/Input/input";
 import * as actionTypes from "../../../Store/actions/authentication";
 import {connect} from "react-redux"

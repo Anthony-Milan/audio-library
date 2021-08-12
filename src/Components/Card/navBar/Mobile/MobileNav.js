@@ -19,7 +19,7 @@ const MobileNav = ({open, closed, isAuth}) => {
             </NavLink>
             </div>
             <nav>
-            <NavigationItems id="mobileNavItems" isAuth={isAuth}clicked={closed} className={styles.MobileNavItem}/>
+            <NavigationItems id="mobileNavItems" isAuth={isAuth} clicked={closed} className={styles.MobileNavItem}/>
             </nav>
             
         </div>

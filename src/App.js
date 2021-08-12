@@ -2,7 +2,6 @@ import "./App.css";
 import React, { Component, Suspense } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Layout from "./Pages/Layout/layout";
-import asyncComp from "./hoc/asyncComp";
 import Loader from "./Components/Card/Loader/loader";
 const SignIn = React.lazy(() => import("./Pages/SignIn/SignIn/signIn"));
 const SignUp = React.lazy(() => import("./Pages/SignUp/signUp"));
