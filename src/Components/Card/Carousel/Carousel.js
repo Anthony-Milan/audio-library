@@ -7,7 +7,7 @@ const Carousel =({album, clicked, show})=>{
  
         return (
           
-          <Slide className={styles.slide} key={album._id}>
+          <Slide className={styles.slide} key={album.id}>
             <Card
               show={show}
               source={album.pictureSrc}

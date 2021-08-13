@@ -34,6 +34,9 @@ img.AlbumCoverIMG {
 h2 {
   border-bottom: none;
 }
+p {
+  text-align: center;
+}
 @media only screen and (max-width: 700px) {
   .Wrapper {
     top: 20%;

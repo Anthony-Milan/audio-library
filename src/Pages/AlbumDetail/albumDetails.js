@@ -14,7 +14,7 @@ class AlbumDetails extends Component {
 
   componentDidMount() {
     this.loadAlbum();
-    this.loadSongs();
+    //this.loadSongs();
   }
 
   componentDidUpdate() {
@@ -42,23 +42,6 @@ class AlbumDetails extends Component {
     }
     
   }
-  loadSongs() {
-    axios.get(
-      "https://audio-library-ed318-default-rtdb.europe-west1.firebasedatabase.app/albums/" +
-        (this.props.match.params.id - 1) +
-        "/songs.json"
-    )
-    .then((response) => {
-        if (response.ok) return response.json();
-        throw new Error('something went wrong while requesting posts');
-      })
-    .then((response)=>{
-      this.setState({songs: response.data})
-    })
-    .catch((error)=>{
-      this.setState({errors: error.message})
-    })
-  }
 
   render() {
     let Pagination = <h1>Album is empty, come back later!</h1>
@@ -67,16 +50,14 @@ class AlbumDetails extends Component {
           <Pagination
             data={this.state.songs}
             RenderComponent={Song}
-            pageLimit={2}
+            pageLimit={3}
             dataLimit={3}
           />)
     }
-    let album = <p style={{ textAlign: "center" }}>Please select a Post!</p>;
+    let album = <p>Please select a Post!</p>;
     if (this.props.match.params.id) {
       album = (
-        <p style={{ textAlign: "center" }}>
           <Loader />
-        </p>
       );
     }
     if (this.state.fullAlbum) {

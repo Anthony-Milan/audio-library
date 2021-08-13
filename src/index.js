@@ -9,6 +9,7 @@ import {combineReducers, createStore, applyMiddleware, compose} from "redux";
 import thunk from "redux-thunk"
 import albumReducer from "./Store/reducers/albumReds";
 import authReducer from"./Store/reducers/auth"
+import {BrowserRouter} from "react-router-dom"
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -42,7 +43,9 @@ axios.interceptors.response.use(
 );
 const app= (
   <Provider store={store}>
-            <App />
+            <BrowserRouter>
+              < App />
+            </BrowserRouter>
     </Provider>
 )
 ReactDOM.render(app, document.getElementById("root"));

@@ -29,7 +29,7 @@ const Pagination = ({ data, RenderComponent, pageLimit, dataLimit }) => {
   return (
     <>
       <div className="getSongs">
-        {getSongs().map((data, index) => (
+        {data.map((data, index) => (
           <RenderComponent key={index} data={data} />
         ))}
       </div>

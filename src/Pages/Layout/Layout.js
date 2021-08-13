@@ -1,39 +1,33 @@
-import React, { Component } from 'react';
+import React, {useState} from 'react';
 import styles from './layout.module.css';
 import NavBar from '../../Components/Card/navBar/navBar';
 import MobileNav from '../../Components/Card/navBar/Mobile/mobileNav';
 import {connect} from "react-redux";
-class Layout extends Component {
-    state = {
-        showSideDrawer: false
+    const Layout = (props)=>{
+    const [show, setShow] = useState(false)
+
+    const sideDrawerClosedHandler = () => {
+        setShow(false);
     }
 
-    sideDrawerClosedHandler = () => {
-        this.setState( { showSideDrawer: false } );
+    const sideDrawerToggleHandler = () => {
+        setShow( ( prevState ) => !prevState);
     }
 
-    sideDrawerToggleHandler = () => {
-        this.setState( ( prevState ) => {
-            return { showSideDrawer: !prevState.showSideDrawer };
-        } );
-    }
 
-    render () {
-        
         return (
                 <>
-                <NavBar isAuth={this.props.isAuth} drawerToggleClicked={this.sideDrawerToggleHandler} />
+                <NavBar isAuth={props.isAuth} drawerToggleClicked={sideDrawerToggleHandler} />
                 <MobileNav
-                isAuth={this.props.isAuth}
-                    open={this.state.showSideDrawer}
-                    closed={this.sideDrawerClosedHandler} />
+                isAuth={props.isAuth}
+                    open={show}
+                    closed={sideDrawerClosedHandler} />
                 <main className={styles.Content}>
-                    {this.props.children}
+                    {props.children}
                 </main>
                 </>        
            )
     }
-}
 const mapStateToProps = state =>{
     return{
         isAuth: state.auth.token !== null

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styles from "./navBar.module.css";
 import {NavLink} from "react-router-dom";
 
@@ -8,23 +8,22 @@ import Logo from "../../Logo/logo";
 import NavigationItems from "./navigationItems";
 
 
-class NavBar extends Component {
-  render() {
-    return( <>
+const NavBar = ({drawerToggleClicked, isAuth})=> {
+    return( 
+      <>
         <header className={styles.Overhead}>
-          <MobileToggle clicked={this.props.drawerToggleClicked} />
+          <MobileToggle clicked={drawerToggleClicked} />
           <div className={styles.Logo}>
           <NavLink to="/">
             <Logo/>
             </NavLink>
           </div>
           <nav className={styles.Desktop}>
-            <NavigationItems isAuth={this.props.isAuth}/>
+            <NavigationItems isAuth={isAuth}/>
           </nav>
         </header>
         
         </>
     )
-  }
 }
 export default NavBar;
