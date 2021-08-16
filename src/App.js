@@ -1,9 +1,15 @@
 import "./App.css";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import Layout from "./Pages/Layout/layout";
 import Loader from "./Components/Card/Loader/loader";
 import Routing from "./routing"
-const app =()=>{
+import {connect} from "react-redux"
+import {withRouter} from "react-router-dom"
+import * as actions from "./Store/actions/authentication"
+const App =(props)=>{
+  useEffect(()=>{
+    props.onTryAutoSignUp()
+  },[])
     return (
       <>
       <Layout >
@@ -15,5 +21,9 @@ const app =()=>{
      </>
     );
   }
-
-export default app;
+const mapDispatchToProps = (dispatch)=>{
+  return{
+    onTryAutoSignUp: ()=> dispatch(actions.authCheckState())
+  }
+}
+export default connect(null, mapDispatchToProps)(withRouter(App));

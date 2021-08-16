@@ -12,11 +12,10 @@ const Logout = (props)=>{
         <h3>Are you sure you want to Log out? We'd be sad to see you go.</h3>
         <ul className={styles.list}>
           
-            <NavItem
+            <NavItem style={{borderLeft:"none"}}
               className={styles.buttons}
               link="/"
               clicked={()=>{props.onLogout(); props.clicked()}}
-              
             >
               Log Out
             </NavItem>

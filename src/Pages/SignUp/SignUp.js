@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, withRouter } from "react-router-dom";
+import React, { useState } from "react";
+import { Redirect, NavLink, withRouter } from "react-router-dom";
 import Input from "../../Components/Card/Input/input";
 import styles from "./signUp.module.css";
 import { connect } from "react-redux";
@@ -40,7 +40,7 @@ const SignUp = (props) => {
 
     email: {
       inputType: "input",
-      label: "Email",
+      label: "Email:",
       type: "email",
       placeholder: "Example@gmail.com",
       value: "",
@@ -52,7 +52,7 @@ const SignUp = (props) => {
     },
     password: {
       inputType: "input",
-      label: "Password",
+      label: "Password:",
       type: "password",
       placeholder: "Password",
       value: "",
@@ -96,6 +96,7 @@ const SignUp = (props) => {
   const submissionHandler = (event) => {
     event.preventDefault();
       props.onAuth(signUpForm.email.value, signUpForm.password.value);
+      
 
   };
 
@@ -149,8 +150,13 @@ const SignUp = (props) => {
   if (error) {
     errorMsg = <p className={styles.error}>{error}</p>;
   }
+  let authenticated = null;
+  if (props.isAuth){
+    authenticated = (props.history.push('/'))
+  }
   return (
     <div className={styles.Wrapper}>
+    {authenticated}
       <form onSubmit={submissionHandler}>
         <h2>Sign Up</h2>
         {form}
@@ -168,6 +174,7 @@ const mapStateToProps = (state) => {
   return {
     loading: state.auth.loading,
     error: state.auth.error,
+    isAuth: state.auth.token !==null
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -175,6 +182,7 @@ const mapDispatchToProps = (dispatch) => {
     onAuth: (email, password) =>
       dispatch(actionTypes.authenticate(email, password)),
     authErr: (error) => dispatch(actionTypes.authInvalid(error)),
+    
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUp));

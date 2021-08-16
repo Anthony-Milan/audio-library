@@ -23,7 +23,7 @@ export const initializeAlbums = () => {
     dispatch(fetchAlbumsStart());
     axios
       .get(
-        "https://audio-library-ed318-default-rtdb.europe-west1.firebasedatabase.app/albums.json"
+        "/albums.json"
       )
       .then((response) => {
         const fetchedAlbums = [];

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./signIn.module.css";
-import { NavLink, withRouter } from "react-router-dom";
+import { Redirect, NavLink, withRouter } from "react-router-dom";
 import Input from "../../../Components/Card/Input/input";
 import * as actionTypes from "../../../Store/actions/authentication";
 import { connect } from "react-redux";
@@ -16,7 +16,7 @@ const SignIn = (props) => {
     email: {
       
       inputType: "input",
-      label: "Email",
+      label: "Email:",
       type: "email",
       placeholder: "Example@gmail.com",
       value: "",
@@ -29,7 +29,7 @@ const SignIn = (props) => {
     password: {
       
       inputType: "input",
-      label: "Password",
+      label: "Password:",
       type: "password",
       placeholder: "Password",
       value: "",
@@ -56,6 +56,7 @@ const SignIn = (props) => {
   const submissionHandler = (event) => {
       event.preventDefault();
       props.onAuth(signInForm.email.value, signInForm.password.value);
+     
     }
 
   const validateForm = (value, params) => {
@@ -100,8 +101,13 @@ const SignIn = (props) => {
   if (props.error) {
     errorMsg = <p className={styles.error}>Invalid e-mail or password.</p>;
   }
+  let authenticated = null;
+  if (props.isAuth){
+    authenticated = (props.history.push('/'))
+  }
   return (
     <div className={styles.Wrapper}>
+    {authenticated}
       <form onSubmit={submissionHandler}>
         <h2>Sign in</h2>
         {form}
@@ -118,12 +124,13 @@ const mapStateToProps = (state) => {
   return {
     loading: state.auth.loading,
     error: state.auth.error,
+    isAuth: state.auth.token !==null
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAuth: (email, password) =>
-      dispatch(actionTypes.authenticateIn(email, password)),
+    onAuth: (email, password) => dispatch(actionTypes.authenticateIn(email, password)),
+   
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignIn));

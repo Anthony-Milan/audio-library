@@ -32,3 +32,12 @@
   color: #250004;
   border: none;
 }
+@media (max-width: 499px) {
+  .Wrapper {
+    width: inherit;
+  }
+  .buttons {
+    width: 50px;
+    margin: auto;
+  }
+}

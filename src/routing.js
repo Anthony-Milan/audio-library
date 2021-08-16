@@ -39,7 +39,9 @@ const Routing=()=> {
           />
           <Route
             path="/albums/:id"
+            exact
             render={() => (
+                
                 <AlbumDetails />
             )}
           />

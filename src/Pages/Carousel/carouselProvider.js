@@ -20,7 +20,7 @@ const AlbumCarousel = (props) => {
   useEffect(() => {
     props.onInitAlbums()
     //eslint-disable-next-line
-  },[props.onInitAlbums])
+  },[])
 
   const toggleTracksHandler = () => {
     setShow((prev) => !prev);
@@ -45,12 +45,12 @@ const AlbumCarousel = (props) => {
         {show ? "Hide Tracks" : "Show Tracks"}
       </button>
       <Slider className={styles.slider}>
-        {props.albums.map((albums, index) => (
+        {props.albums.map((albums) => (
           <Carousel
             current={currentIndex}
             show={show}
             album={albums}
-            key={albums.num}
+            id={albums.num}
             clicked={()=>getAlbumDetailsHandler(albums.num)}
           />
         ))}

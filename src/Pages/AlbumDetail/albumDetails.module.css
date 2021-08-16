@@ -37,6 +37,22 @@ h2 {
 p {
   text-align: center;
 }
+.vertical {
+  background-color: #ed5901;
+  border-radius: 12px;
+  height: 500px;
+  width: 5px;
+}
+.Songs {
+  background-color: white;
+  box-shadow: 0px 0px 6px 3px rgba(247, 245, 245, 0.2), 0px 0px 8px 4px #85a8f5;
+  color: #bd3100;
+  margin: 50px;
+  width: 30%;
+  height: 300px;
+  padding: 20px;
+  border-radius: 12px;
+}
 @media only screen and (max-width: 700px) {
   .Wrapper {
     top: 20%;
