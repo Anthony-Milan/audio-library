@@ -3,36 +3,13 @@ import axios from "../../services";
 import { withRouter } from "react-router-dom";
 import Loader from "../../Components/Card/Loader/loader";
 import styles from "./albumDetails.module.css";
-import Song from "../../Components/Song/song";
-import ReactPaginate from "react-paginate"
+import Song from "../../Components/Song/songList";
 const AlbumDetails = (props) => {
   const [fullAlbum, setFullAlbum] = useState(null);
-  const [songs, setSongs] = useState([]);
-  const [error, setError] = useState("");
-  const [page, setPage] = useState(0)
-  const [pages, setPages] = useState(0)
-  const [perPage, setPerPage]= useState(1)
-
   useEffect(() => {
     loadAlbum();
-    loadSongs();
+    //eslint-disable-next-line
   }, []);
-
-  useEffect(() => {
-    loadAlbum();
-  });
-  const loadSongs = () => {
-    axios
-      .get(url + "/songs.json")
-      .then((response) => {
-        setSongs(response.data);
-        setPages(Math.ceil(songs.length/perPage))
-        console.log(response)
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
-  };
   let url =
     "https://audio-library-ed318-default-rtdb.europe-west1.firebasedatabase.app/albums/" +
     (props.match.params.id - 1);
@@ -49,11 +26,8 @@ const AlbumDetails = (props) => {
       }
     }
   };
-  const handlePageClick = (event)=>{
-    let page=event.selected;
 
-  }
-  let album = <p>Please select a Post!</p>;
+  let album = <p>Please select an album!</p>;
   if (props.match.params.id) {
     album = <Loader />;
   }
@@ -74,31 +48,19 @@ const AlbumDetails = (props) => {
           </h2>
           <h3>{fullAlbum.nbOfTracks} tracks</h3>
         </div>
-     </>
+      </>
     );
   }
-  
 
-  return  (
+  return (
     <div className={styles.Wrapper}>
-    {album}
-    <div className={styles.vertical}>
+      {album}
+      <div className={styles.vertical}></div>
+      <div className={styles.Songs}>
+        <Song url={url} />
+      </div>
     </div>
-    <div className={styles.Songs}>
-    <Song url={url}/>
-    <ReactPaginate
-    previousLabel={'Previous'}
-    nextLabel={'Next'}
-    breakLabel={'...'}
-    pageCount={3}
-    containerClassName={'pagination'}
-    onPageChange={handlePageClick}
-    pageRangeDisplayed={1}
-    marginPageDisplayed={0}
-    />
-    </div>
-    </div>
-     );
+  );
 };
 
 export default withRouter(AlbumDetails);

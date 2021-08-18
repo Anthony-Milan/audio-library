@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect, NavLink, withRouter } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import Input from "../../Components/Card/Input/input";
 import styles from "./signUp.module.css";
 import { connect } from "react-redux";
@@ -95,9 +95,7 @@ const SignUp = (props) => {
 
   const submissionHandler = (event) => {
     event.preventDefault();
-      props.onAuth(signUpForm.email.value, signUpForm.password.value);
-      
-
+    props.onAuth(signUpForm.email.value, signUpForm.password.value);
   };
 
   const validateForm = (value, params) => {
@@ -118,9 +116,9 @@ const SignUp = (props) => {
     if (params.isName) {
       valid = validNameRegex.test(value) && valid;
     }
-    if (signUpForm.password.value !== signUpForm.confirmPass.value){
-      setError("Passwords don't match")
-        valid = false
+    if (signUpForm.password.value !== signUpForm.confirmPass.value) {
+      setError("Passwords don't match");
+      valid = false;
     }
     return valid;
   };
@@ -151,12 +149,12 @@ const SignUp = (props) => {
     errorMsg = <p className={styles.error}>{error}</p>;
   }
   let authenticated = null;
-  if (props.isAuth){
-    authenticated = (props.history.push('/'))
+  if (props.isAuth) {
+    authenticated = props.history.push("/");
   }
   return (
     <div className={styles.Wrapper}>
-    {authenticated}
+      {authenticated}
       <form onSubmit={submissionHandler}>
         <h2>Sign Up</h2>
         {form}
@@ -174,7 +172,7 @@ const mapStateToProps = (state) => {
   return {
     loading: state.auth.loading,
     error: state.auth.error,
-    isAuth: state.auth.token !==null
+    isAuth: state.auth.token !== null,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -182,7 +180,6 @@ const mapDispatchToProps = (dispatch) => {
     onAuth: (email, password) =>
       dispatch(actionTypes.authenticate(email, password)),
     authErr: (error) => dispatch(actionTypes.authInvalid(error)),
-    
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUp));

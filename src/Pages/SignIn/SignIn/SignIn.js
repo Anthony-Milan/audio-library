@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./signIn.module.css";
-import { Redirect, NavLink, withRouter } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import Input from "../../../Components/Card/Input/input";
 import * as actionTypes from "../../../Store/actions/authentication";
 import { connect } from "react-redux";
@@ -56,7 +56,6 @@ const SignIn = (props) => {
   const submissionHandler = (event) => {
       event.preventDefault();
       props.onAuth(signInForm.email.value, signInForm.password.value);
-     
     }
 
   const validateForm = (value, params) => {

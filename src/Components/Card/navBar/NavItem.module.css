@@ -7,6 +7,9 @@
   border-bottom: 1px solid #250004;
   border-left: none;
 }
+.NavItem:first-child {
+  border-right: 1px solid #250004;
+}
 .NavItem a {
   box-sizing: border-box;
   display: block;

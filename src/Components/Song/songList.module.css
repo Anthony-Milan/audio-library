@@ -1,0 +1,51 @@
+.songPage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.song {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+ul {
+  list-style-type: none;
+  justify-content: space-between;
+  display: inline;
+  float: right;
+}
+li.songItem {
+  align-items: start;
+  display: block;
+  float: left;
+  padding: 20px;
+  border-bottom: 1px solid #bd3100;
+}
+li:last-child.songItem {
+  display: block;
+  float: right;
+}
+
+.listBtn {
+  display: inline;
+  font-family: "Lobster Two", cursive;
+  font-style: italic;
+  font-size: 14px;
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  width: 55px;
+  height: 30px;
+  border-radius: 35%;
+  opacity: 0.8;
+  color: #250004;
+  background-color: #ed5901;
+  border: none;
+}
+.listBtn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
